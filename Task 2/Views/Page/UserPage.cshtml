@@ -1,0 +1,75 @@
+﻿@using Task2.Models
+@model IEnumerable<User>
+@{
+    ViewBag.Title = "Login page";
+}
+
+@{
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            Учетные записи      
+        </div>
+        @using (Html.BeginForm())
+        {
+            <p>
+                <a><input type="image" alt="submit" src="~/Content/Block.gif" border="0" width="24" height="24" formaction="Block" name="Block" value="Block" /></a>
+                <a><input type="image" alt="submit" src="~/Content/Unblock.gif" border="0" width="24" height="24" formaction="Unblock" name="Delete" value="Unblock" /></a>
+                <a><input type="image" alt="submit" src="~/Content/Delete.gif" border="0" width="24" height="24" formaction="Delete" name="Delete" value="Delete" /></a>
+            </p>
+            <table class="table table-striped">
+                <tr>
+                    <th>Id</th>
+                    <th>Имя</th>
+                    <th>Email</th>
+                    <th>RegisterDate</th>
+                    <th>LastLoginDate</th>
+                    <th>Blocked</th>
+                    <th>
+                        <a><input class="btn btn-success" type="button" id="toggle" value="Select all" onClick="toggle_on()" /></a>
+                        <a><input class="btn btn-success" type="button" id="toggle" value="Deselect all" onClick="toggle_off()" /></a>
+                    </th>
+                </tr>
+                @if (Model.Count() == 0)
+                {
+                    <tr>
+                        <td colspan="5" class="text-center">Нет ни одной учетной записи</td>
+                    </tr>
+                }
+                else
+                {
+
+                    foreach (User user in Model)
+                    {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+                <td>@user.RegisterDate</td>
+                <td>@user.LastLoginDate</td>
+                <td>
+                    @if (user.isBlocked)
+                    {
+                        <a>Yes</a>
+                    }
+                    else
+                    {
+                        <a>No</a>
+                    }
+                </td>
+                <td align="center">
+                    <input id="checkboxid" type="checkbox" name="usersid" value="@user.Id" />
+                </td>
+            </tr>
+
+                    }
+
+
+
+                }
+            </table>
+        }
+    </div>
+

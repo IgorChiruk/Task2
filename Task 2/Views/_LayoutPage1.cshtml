@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-grid.min.css" rel="stylesheet" />
+    <link href="~/Content/sticky-footer-navbar.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/MyStyle.css" rel="stylesheet" />
+    <script language="JavaScript">
+
+        function toggle_on()
+        {
+            var checkboxes = document.getElementsByName('usersid');
+            for (var i in checkboxes)
+            {
+                checkboxes[i].checked = 'TRUE';
+            }      
+        }
+        
+        function toggle_off()
+        {
+            var checkboxes = document.getElementsByName('usersid');
+            for (var i in checkboxes)
+            {
+                checkboxes[i].checked = '';
+            }      
+    }
+    </script>
+</head>
+<body>
+    <header >
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="#">Task2</a>
+            <a class="navbar-brand" href="#">@Html.ActionLink("Logout", "Logout")</a>
+        </nav>
+    </header>
+    <div class="container bgcont center-block centered-top">
+        @RenderBody()
+    </div>
+    <footer class="page-footer font-small special-color-dark pt-4">
+        <div class="container">
+            <span class="text-muted">© 2020 Copyright: Игорь Чирук </span>
+        </div>
+    </footer>
+</body>
+</html>

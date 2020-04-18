@@ -1,0 +1,27 @@
+﻿@model Task2.Models.RegisterModel
+
+@{
+    ViewBag.Title = "Register page";
+}
+
+@{
+    Layout = "~/Views/_LayoutPage1.cshtml";
+
+}
+
+
+<body>
+    <div>
+        <center>
+            @using (Html.BeginForm("Register", "Account"))
+            {
+                @Html.ValidationSummary()
+                <p>Ваш логин: @Html.TextBoxFor(x => x.Login)</p>
+                <p>Ваш Email: @Html.TextBoxFor(x => x.Email)</p>
+                <p>Ваш пароль: @Html.TextBoxFor(x => x.Password)</p>
+                <p>Подтвердите пароль: @Html.TextBoxFor(x => x.ConfirmPassword)</p>
+                <p><input class="btn btn-success" type="submit" value="Зарегистрироваться" /></p>
+            }
+        </center>
+    </div>
+</body>
